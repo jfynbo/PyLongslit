@@ -24,7 +24,7 @@ Quick guide for experienced users:
 ----------------------------------
 
 1. `Download the source code. <https://github.com/jfynbo/PyLongslit/>`_
-2. Create a new Python 3.9 environment.
+2. Create a new Python 3.10 environment.
 3. Install the requirments from `requirments.txt` using ``pip``. 
 
 Detailed guide for users new to Python environments:
@@ -74,9 +74,9 @@ To create a new virtual environment using Anaconda, run the following command in
 
 .. code-block:: bash
 
-    conda create --name PyLongslit python=3.9
+    conda create --name PyLongslit python=3.10
 
-You can replace ``PyLongslit`` with any name you like. This will create a new environment with Python 3.9 installed.
+You can replace ``PyLongslit`` with any name you like. This will create a new environment with Python 3.10 installed.
 
 To activate the environment, run:
 
@@ -86,14 +86,14 @@ To activate the environment, run:
 
 **Using venv (standard Python):**
 
-To create a new virtual environment using venv (standard Python), make sure you have Python 3.9 installed,
+To create a new virtual environment using venv (standard Python), make sure you have Python 3.10 installed,
 then run the following command in your terminal:
 
 .. code-block:: bash
 
-    python3.9 -m venv PyLongslit
+    python3.10 -m venv PyLongslit
 
-You can replace ``PyLongslit`` with any name you like. This will create a new environment with the Python version 3.9 installed.
+You can replace ``PyLongslit`` with any name you like. This will create a new environment with the Python version 3.10 installed.
 
 .. note::
 
@@ -103,16 +103,16 @@ You can replace ``PyLongslit`` with any name you like. This will create a new en
 
         python -m venv PyLongslit
 
-    This is because the Python executable might not be named ``python3.9`` on Windows.
+    This is because the Python executable might not be named ``python3.10`` on Windows.
     In that case, you can ensure that the correct version of Python is used by running:
 
     .. code-block:: powershell
 
         python --version
 
-    If the Python version printed is not 3.9, you have several options:
+    If the Python version printed is not 3.10, you have several options:
 
-    1. If your version is > 3.9, you most likely will be fine. Otherwise, try one of the following steps.
+    1. If your version is > 3.10, you most likely will be fine. Otherwise, try one of the following steps.
     2. Install Anaconda and create the environment using the conda command as described above.
     3. You can set the Python version to be used by the terminal by adding the Python installation directory to the PATH environment variable. See the following link for more information: `How to set the path and environment variables in Windows <https://realpython.com/add-python-to-path/>`_.
 
