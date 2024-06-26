@@ -1,15 +1,26 @@
-# This is a python program to make a specflat frame
-print('Script running')
-nframes = 5
-ysize = 2102
-xsize = 500
-
-import astropy
 import numpy
 from astropy.io import fits
 
+"""
+This is a python program to make a specflat frame
+"""
+
+# THESE HAVE TO BE SET MANUALLY
+ysize = 2102
+xsize = 500
+
+print('Script running')
+print('\n ---Using the following parameters:---\n')
+print(f'ysize = {ysize}')
+print(f'xsize = {xsize}')
+print('----------------------------------------\n')
+
+
 #Read in the raw flat frames and subtact mean of overscan region 
 list = open('specflat.list')
+nframes = len(list.readlines())
+list.seek(0)
+
 bigflat = numpy.zeros((nframes,ysize,xsize),float)
 BIASframe = fits.open('../rawbias/BIAS.fits')
 BIAS = numpy.array(BIASframe[0].data)

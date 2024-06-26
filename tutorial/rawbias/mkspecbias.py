@@ -1,15 +1,28 @@
-# This is a python program to make a BIAS frame
-print('Script running')
-nframes = 11
-ysize = 2102
-xsize = 500
 
-import astropy
 import numpy
 from astropy.io import fits
 
+"""
+This is a python program to make a BIAS frame
+"""
+
+# THESE HAVE TO BE SET MANUALLY
+ysize = 2102
+xsize = 500
+
+print('Script running')
+print('\n ---Using the following parameters:---\n')
+print(f'ysize = {ysize}')
+print(f'xsize = {xsize}')
+print('----------------------------------------\n')
+
 #Read in the raw bias frames and subtact mean of overscan region 
+
 list = open('specbias.list')
+
+nframes = len(list.readlines())
+list.seek(0)
+
 bigbias = numpy.zeros((nframes,ysize,xsize),float)
 #bigbias = numpy.zeros((nframes,3,3))
 for i in range(0,nframes):

@@ -2,10 +2,30 @@ import numpy as np
 import glob as glob
 from astropy.io import fits
 
-# This is a python program to reduce the science frames
-print('Script running')
+"""
+This is a python program to reduce the observation frames 
+(both Science and Standard Star).
+"""
+
+# THESE HAVE TO BE SET MANUALLY
 ysize = 2102
 xsize = 500
+standard_star_reduction = False # Set to True if you are reducing a standard star.
+
+
+# The x-coordinates of the object centers. 
+# Must be same length number of exposures, and sorted to match
+# the exposure frames in alphabetical order.
+centers = [247, 271] 
+
+
+print('Script running')
+print('\n ---Using the following parameters:---\n')
+print(f'ysize = {ysize}')
+print(f'xsize = {xsize}')
+print(f'Is this a standard star reduction? = {standard_star_reduction}\n')
+print(f'Object centers: {centers}\n')
+
 
 BIASframe = fits.open('../rawbias/BIAS.fits')
 BIAS = np.array(BIASframe[0].data)
@@ -13,12 +33,20 @@ FLATframe = fits.open('../rawflats/Flat.fits')
 FLAT = np.array(FLATframe[0].data)
 
 rawimages = sorted(glob.glob("crr*.fits"))
-print('Number of raw images:',len(rawimages))
-outnames = ['sub1.fits','sub2.fits']
-centers = [247, 271]
+
+n_rawimages = len(rawimages)
+
+print('Number of raw images:', n_rawimages)
+
+outnames = [f'sub{n}.fits' for n in range(1, n_rawimages+1)]
+
+if len(centers) != n_rawimages:
+    raise ValueError(
+        'The number of centers must be equal to the number of raw images'
+        )
 
 #Read the raw file, subtract overscan, bias and divide by the flat
-for n in range(0,2):
+for n in range(0, n_rawimages):
      spec = fits.open(rawimages[n])
      print('Info on file:')
      print(spec.info())
@@ -33,9 +61,14 @@ for n in range(0,2):
      fits.writeto(outnames[n],specdata1,hdr,overwrite=True)
 
 #Add and rotate
-sub1 = fits.open(outnames[0])
-sub2 = fits.open(outnames[1])
-sum = sub1[0].data+sub2[0].data
+
+sum = np.zeros_like(fits.open(outnames[0])[0].data)
+
+for n in range(0, n_rawimages):
+        sub = fits.open(outnames[n])
+        sum = sub[0].data
+
+
 rot = np.rot90(sum, k=3)
 hduout = fits.PrimaryHDU(rot)
 hduout.header.extend(hdr, strip=True, update=True,
@@ -50,7 +83,10 @@ hduout.header['CRVAL1'] = 1
 hduout.header['CRVAL1'] = 1
 hduout.header['CDELT1'] = 1
 hduout.header['CDELT2'] = 1
-hduout.writeto("../obj.fits", overwrite=True)
+hduout.writeto(
+      "../obj.fits" if not standard_star_reduction else "../std.fits",
+      overwrite=True
+)
 
 
 #Arcframe
@@ -81,5 +117,8 @@ hduout.header['CRVAL1'] = 1
 hduout.header['CRVAL1'] = 1
 hduout.header['CDELT1'] = 1
 hduout.header['CDELT2'] = 1
-hduout.writeto("../arcsub.fits", overwrite=True)
+hduout.writeto(
+      "../arcsub.fits" if not standard_star_reduction else "../arcsub_std.fits",
+      overwrite=True
+)
 
