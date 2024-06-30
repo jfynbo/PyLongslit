@@ -8,3 +8,10 @@ reducescience.py and reducestd.py made into one script,
 here all input/output made dynamic so the scripts no longer
 depend on pre-determined number of files. This edit allows
 for cosmic ray removal for standard stars also.
+
+30.06.2024
+--------------
+
+Changed reduceobs.py to be called by wrapper scripts reducescience.py 
+and reducestd.py . Same for extract_1d.py, now also called by wrapper 
+scripts extract_science_1d.py and extract_std_1d.py. 
