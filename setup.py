@@ -38,7 +38,7 @@ import glob
 from datetime import datetime
 import locale
 
-locale.setlocale(locale.LC_TIME, "en_GB")
+locale.setlocale(locale.LC_TIME, "en_GB.UTF-8")
 
 import pandas as pd
 
