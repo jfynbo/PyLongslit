@@ -8,8 +8,8 @@ exec(open("setup.py").read())
 f = open('database/stdinfo', 'w')
 
 #name of standard star
-stdnm = 'gd71'
-#stdnm = 'feige110'
+#tdnm = 'gd71'
+stdnm = 'feige110'
 #stdnm = 'bd33d2642'
 
 #get information from header
@@ -44,43 +44,46 @@ plt.xlabel('lambda i Å')
 plt.ylabel('Counts')
 plt.xlabel('Observed wavelength [Å]')
 plt.ylabel('Counts per sec')
-plt.plot(lam,stdcounts, lw = 1,
-         alpha=0.5, label='1d extracted standard star spectrum')
+plt.plot(lam,stdcounts, lw = 1, label='1d extracted standard star spectrum')
 plt.legend()
 
-#Overplot boxes with reference flux measurements
-for n in range(0,len(reflam)):
-     wl = reflam[n]
-     if (wl > np.amin(lam)) & (wl < np.amax(lam)):
-           window = (lam > wl-0.5*bandwidth) & (lam < wl+0.5*bandwidth)
-           maxflux = np.amax(stdcounts[window])
-           minflux = np.amin(stdcounts[window])
-           plt.plot([wl-0.5*bandwidth,wl-0.5*bandwidth],[minflux,maxflux],color='r', lw=1.5)
-           plt.plot([wl+0.5*bandwidth,wl+0.5*bandwidth],[minflux,maxflux],color='r', lw=1.5)
-           plt.plot(lam[window],lam[window]/lam[window]+minflux,color='r', lw=1.5)
-           plt.plot(lam[window],lam[window]/lam[window]+maxflux,color='r', lw=1.5)
+plt.title("Press on a part of a spectrum that you want to mask\n"
+              "Press q to quit")
+plt.draw()
+plt.pause(0.001)
 
-#Click on red boxes that should be deleted.
-print('Double left-click on red boxes that should be deleted. Other mouse-clicks to exit.')
+
+#hack to only show legend once, TODO: fix this
+legend_bool = True
+
 deleted = list()
 get_new_line = True
 while get_new_line:
-    points = plt.ginput(n=1, timeout=30, show_clicks=True, mouse_add=1, mouse_stop=2)
+    plt.title("Press on a part of a spectrum that you want to mask\n"
+              "Press q to quit")
+    plt.draw()
+    plt.pause(0.001)
+    points = plt.ginput(n=1, timeout=30, mouse_add = 1, mouse_stop = 3)
     if len(points) == 1:
         pix_ref, _ = points[0]
         select = np.abs(reflam - pix_ref) < bandwidth/2
         for wl in (reflam[select]): 
-              deleted.append([wl])
-              window = (lam > wl-0.5*bandwidth) & (lam < wl+0.5*bandwidth)
-              maxflux = np.amax(stdcounts[window])
-              minflux = np.amin(stdcounts[window])
-              plt.plot([wl,wl],[minflux,maxflux],marker="|", color='b', markersize=20)  
+            deleted.append(wl)
+            window = (lam > wl-0.5*bandwidth) & (lam < wl+0.5*bandwidth)
+            maxflux = np.amax(stdcounts[window])
+            minflux = np.amin(stdcounts[window])
+            if legend_bool:
+                plt.vlines(wl, minflux, maxflux, color='r', linewidth=1, label = 'Masked regoin')
+                legend_bool = False
+            else: 
+                plt.vlines(wl, minflux, maxflux, color='r', linewidth=1)
+            plt.legend()
+            plt.title("Masking out wavelength %.1f, please wait..." % wl)
+            plt.draw()
+            plt.pause(0.001)   
     else:
-        answer = input("End [Y/N]?: ")
-        if answer.lower() in ['yes', 'y', '']:
-             get_new_line = False
-             plt.close("all")
- 
+        get_new_line = False
+        plt.close("all")
 plt.show()
 
 #Write to file

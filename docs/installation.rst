@@ -20,14 +20,14 @@ Python scripts. Therefore, the installation consists of these steps:
 
 We provide both a quickgide for experienced users and a more detailed guide for users who are new to Python environments.
 
-Quick guide for experienced users:
+Quick guide for experienced users
 ----------------------------------
 
 1. `Download the source code. <https://github.com/jfynbo/PyLongslit/>`_
 2. Create a new Python 3.10 environment.
 3. Install the requirments from `requirments.txt` using ``pip``. 
 
-Detailed guide for users new to Python environments:
+Detailed guide for users new to Python environments
 ----------------------------------------------------
 
 1. Download the source code
