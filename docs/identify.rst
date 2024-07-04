@@ -68,3 +68,5 @@ the line identification:
     .. image:: pictures/id_post_first_ref.png
        :width: 600
        :align: center
+
+   ..............................
