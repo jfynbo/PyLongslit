@@ -12,7 +12,6 @@ down in detail in the descriptions of the individual steps.
 
    ├── calibrate.py
    ├── database
-   │   ├── idarc.dat
    │   ├── lapalma.dat
    │   ├── map-g04-he-1.pdf
    │   ├── map-g04-he-2.pdf

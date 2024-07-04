@@ -1,3 +1,5 @@
+.. _pre_processing:
+
 Pre-processing
 ==============
 
@@ -173,10 +175,12 @@ The files starting with `crr` and `sub` are in-between products and have
 no importance for further processing. The `arcsub.fits` and `arcsub_std.fits`
 are reduced arc-lamp frames, and the `obj.fits` and `std.fits` are the extracted
 1d-spectra of the science and standard star frames respectively. **These 4
-are the files that will be used for further processing.**
+are the files that will be used for further processing.** If you have aquired
+the files `arcsub.fits`, `arcsub_std.fits`, `obj.fits` and `std.fits`, you can
+continue to the :ref:`pipeline <pipeline>` section.
 
-Overview of the pre-processing steps
-""""""""""""""""""""""""""""""""""""
+Schematic overview of the pre-processing steps
+""""""""""""""""""""""""""""""""""""""""""""""
 
 We provide a schematic overview of the pre-processing steps. 
 Users are not expected to study or understand this, 
