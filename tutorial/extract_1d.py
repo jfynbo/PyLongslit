@@ -6,10 +6,10 @@ This script is not meant to be called directly, but rather to be imported
 and called from extract_science_1d.py or extract_std_1d.py.
 """
 
-def extract_1d(standrad_star = False):
+#Run the setup script
+exec(open("setup.py").read())
 
-    #Run the setup script
-    exec(open("setup.py").read())
+def extract_1d_spec(standard_star = False):
 
     # =============================================================================
     # reidentify
@@ -44,7 +44,7 @@ def extract_1d(standrad_star = False):
         lower_cut, upper_cut = i*STEP_REID, (i+1)*STEP_REID
         reidentify_i = np.sum(
                             lampimage[lower_cut:upper_cut, :]
-                            if not standrad_star else 
+                            if not standard_star else 
                             stdlampimage[lower_cut:upper_cut, :],
                             axis=0
                             ) 
@@ -171,7 +171,7 @@ def extract_1d(standrad_star = False):
     # =============================================================================
     lower_cut = N_WAVELEN//2 - NSUM_AP//2 
     upper_cut = N_WAVELEN//2 + NSUM_AP//2
-    if not standrad_star:
+    if not standard_star:
         apall_1 = np.sum(objimage[:, lower_cut:upper_cut], axis=1)
     else:
         apall_1 = np.sum(stdimage[:, lower_cut:upper_cut], axis=1)
@@ -283,7 +283,7 @@ def extract_1d(standrad_star = False):
     for i in range(N_AP - 1):
         lower_cut, upper_cut = i*STEP_AP, (i+1)*STEP_AP
         
-        if not standrad_star:
+        if not standard_star:
             apall_i = np.sum(objimage[:, lower_cut:upper_cut], axis=1)
         else:
             apall_i = np.sum(stdimage[:, lower_cut:upper_cut], axis=1)
@@ -436,7 +436,7 @@ def extract_1d(standrad_star = False):
 
     #subtract sky
     for i in range(N_WAVELEN):
-        cut_i = objimage[:, i].copy() if not standrad_star else stdimage[:, i].copy()
+        cut_i = objimage[:, i].copy() if not standard_star else stdimage[:, i].copy()
         ap_sky_i = int(y_ap[i]) + ap_sky_offset
     
         x_sky = np.hstack( (np.arange(ap_sky_i[0], ap_sky_i[1]),
@@ -465,7 +465,7 @@ def extract_1d(standrad_star = False):
     _ = fits.PrimaryHDU(data=data_skysub, header=hdr)
     _.data = _.data.astype('float32')
     
-    if not standrad_star:
+    if not standard_star:
         _.writeto(DATAPATH/(OBJIMAGE.stem+".skysub.fits"), overwrite=True)
         _ = fits.PrimaryHDU(data=data_variance, header=hdr)
         _.data = _.data.astype('float32')
@@ -493,7 +493,7 @@ def extract_1d(standrad_star = False):
     aps = RectangularAperture(positions=pos, w=1, h=apheight, theta=0)
     phot = aperture_photometry(data_skysub, aps, method='subpixel', subpixels=30)
 
-    if not standrad_star:
+    if not standard_star:
         ap_summed = phot['aperture_sum'] / OBJEXPTIME
         var = aperture_photometry(data_variance, aps, method='subpixel', subpixels=30)
         ap_variance = var['aperture_sum'] / OBJEXPTIME**2
@@ -520,7 +520,7 @@ def extract_1d(standrad_star = False):
         ap_optimal[n] = np.sum(data_skysub[:,n]*weight/data_variance[:,n]) / np.sum(weight**2/data_variance[:,n])
         var_optimal[n] = np.sum(weight) / np.sum(weight**2/data_variance[:,n])
 
-    if not standrad_star:
+    if not standard_star:
         ap_optimal = ap_optimal/ OBJEXPTIME
         var_optimal = var_optimal/ OBJEXPTIME**2
     else:
@@ -530,7 +530,7 @@ def extract_1d(standrad_star = False):
 
     #Plot trace in 2d before and after sky-subtraction
     fig, axs = plt.subplots(2, 1, figsize=(10, 6), sharex=False, sharey=False, gridspec_kw=None)
-    if not standrad_star:
+    if not standard_star:
         axs[0].imshow(objimage, vmin=0, vmax=1000, origin='lower')
     else:
         axs[0].imshow(stdimage, vmin=0, vmax=1000, origin='lower')
@@ -612,7 +612,7 @@ def extract_1d(standrad_star = False):
     hduout.header['BANDID4'] = "Sigma per pixel."
     hduout.header['APNUM1'] = '1 1 %7.2f %7.2f' % (apmin, apmax)
 
-    if not standrad_star:
+    if not standard_star:
 
         hduout.writeto(OBJIMAGE.stem+".ms_1d.fits", overwrite=True)
         print(" ")

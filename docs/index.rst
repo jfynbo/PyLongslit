@@ -16,9 +16,6 @@ Welcome to PyLongslit's documentation!
    :maxdepth: 3
    :caption: Contents:
 
-   installation.rst
+   installation
+   getting_started
 
-   getting_started.rst
-
-
-   
