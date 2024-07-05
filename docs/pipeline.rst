@@ -44,7 +44,6 @@ by clicking on the links below:
     setup
     identify
     extract_1d
-    extract_std
     standard
     sensfunction
     calibrate

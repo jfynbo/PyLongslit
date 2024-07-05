@@ -1,3 +1,6 @@
+.. _extract_1d:
+
+
 Extract 1d science/standard star spectrum
 =========================================
 
