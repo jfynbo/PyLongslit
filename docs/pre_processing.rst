@@ -3,6 +3,16 @@
 Pre-processing
 ==============
 
+The steps of the pre-processing are well known 
+universal procedures in astronomical data reduction. We will 
+therefore not explain the steps in detail, but encourage 
+to search for their meaning online and in litterature, should
+they be not known to the user.
+
+The main objective of the pre-processing is subtraction 
+of detector bias and flat-fielding of all observation frames
+(science, standard star and arc-lamp).
+
 Bias
 """"
 
@@ -17,8 +27,10 @@ should look like this:
 
 .. code-block:: bash
 
-    ├── mkspecbias.py
-    └── specbias.list
+    ├── rawbias
+    │   ├── mkspecbias.py
+    │   └── specbias.list
+
 
 Now, while in the `rawbias` directory, excecute:
 
@@ -31,9 +43,10 @@ saved in the `rawbias` directory.
 
 .. code-block:: bash
 
-    ├── BIAS.fits
-    ├── mkspecbias.py
-    └── specbias.list
+    ├── rawbias
+    │   ├── BIAS.fits
+    │   ├── mkspecbias.py
+    │   └── specbias.list
 
 Flats
 """""
@@ -45,13 +58,15 @@ the `mkspecflat.py` script, the `ysize` anx `xsize` parameters
 need to be set manually. The script also uses the previously 
 produced master bias frame (do **not** move it from the  `rawbias` directory).
 
-Before excecuting, the contents of the `rawflats` directory
-should look like this: 
+Before excecuting, the contents of the `rawflats`
+directory should look like this: 
 
 .. code-block:: bash
 
-    ├── mkspecflat.py
-    └── specflat.list
+    ├── rawflats
+    │   ├── mkspecflat.py
+    │   └── specflat.list
+
 
 Now, while in the `rawflats` directory, excecute:
 
@@ -64,18 +79,19 @@ saved in the `rawflats` directory.
 
 .. code-block:: bash
 
-    ├── Flat.fits
-    ├── mkspecflat.py
-    └── specflat.list
+    ├── rawflats
+    │   ├── Flat.fits
+    │   ├── mkspecflat.py
+    │   └── specflat.list
 
-Cosmic ray removal and 1d-extraction
-""""""""""""""""""""""""""""""""""""
+Cosmic ray removal and reduction of science and standard star frames
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The pre-processing of the science and standard star frames is done almost
-identically for both, and will therefore be described together. **This procedure
-also reduces the arc-lamp frames, which are used for wavelength calibration.**
+identically for both, and will therefore be described together. This procedure
+also pre-processes the arc-lamp frames, which are used for wavelength calibration.
 
-This is to be done after the bias and flat frames have been produced.
+The following is to be done after the bias and flat steps have been excecuted.
 
 Two directories are used for this step, `rawscience` and `rawstd`.
 In both directories, a list of all paths to the science/standard star frames needs
@@ -83,7 +99,7 @@ to be provided, and it should be called `raw_science.list` and `raw_std.list` re
 Also, in both directories, a list of all paths to the arc frames needs
 to be provided. This is the same for both directories, and it should be called `raw_arcs.list` .
 The `crremoval.py` script is used to remove cosmic rays from the frames, 
-and the `reducescience.py` and `reducestd.py` scripts are used to extract the 1d-spectra.
+and the `reducescience.py` and `reducestd.py` scripts are used to reduce the data.
 The `reducescience.py` and `reducestd.py` rely on the `reduceobs.py` script, 
 which is used to placed in the parenting directory. The whole structure should 
 look like this:
@@ -104,7 +120,7 @@ look like this:
 
 In the `crremoval.py` scripts, you will need to set the 
 `gain` and `ron (RDNOISE)` parameters - these can be aquired 
-from the header of the frames. Several paramters can also
+from the fits headers of the frames. Several paramters can also
 be set for guiding the `astroscrappy.detect_cosmics <https://astroscrappy.readthedocs.io/en/latest/api/astroscrappy.detect_cosmics.html>`_
 method.
 
@@ -173,8 +189,8 @@ Several files should be produced:
 
 The files starting with `crr` and `sub` are in-between products and have 
 no importance for further processing. The `arcsub.fits` and `arcsub_std.fits`
-are reduced arc-lamp frames, and the `obj.fits` and `std.fits` are the extracted
-1d-spectra of the science and standard star frames respectively. **These 4
+are reduced arc-lamp frames, and the `obj.fits` and `std.fits` are the reduced 
+science and standard star frames respectively. **These 4
 are the files that will be used for further processing.** If you have aquired
 the files `arcsub.fits`, `arcsub_std.fits`, `obj.fits` and `std.fits`, you can
 continue to the :ref:`pipeline <pipeline>` section.

@@ -12,8 +12,16 @@ made when/if you will run the software for your own data/setup.
 
 The example data comes from 
 `ALFOSC <https://www.not.iac.es/instruments/alfosc/>`_ , and is an 
-observation of SDSSJ234034-033205 quasar, provided by
+observation of the SDSSJ234034-033205 quasar, provided by
 Johan Peter Uldall Fynbo.
+
+Running the software can be divided in two main parts: pre-processing and
+pipeline execution. We also provide the file structure of the `tutorial`
+directory that is attached to this software. Anything done in this tutorial
+is done from the `tutorial` directory.
+
+You have to excecute the steps exactly in the order they are presented in the
+contents table below.
 
 Tutorial
 ----------------------------------------------------

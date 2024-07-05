@@ -1,12 +1,17 @@
 Setting up the directory and file structure
 ===========================================
 
-As for now, the software **relies strongly on a pre-determined structure of
-files/directories and their naming**. We provide a correct setup in this 
-tutorial, and the user should use exactly the same structure in any 
-reduction. We advise to copy the tutorial directory and  then replacing/editing
-relevant files for individual observations. The file structure will be broken
-down in detail in the descriptions of the individual steps.
+We have prepped the `tutorial` directory with the necessary files and scripts
+to guide you through the reduction of a long-slit spectrum. Everything you will
+need is in the `tutorial` directory, and you should not need to move any files
+at any time.
+
+If/when reducing own observations, we advise you to copy the `tutorial` directory
+and  then replacing/editing relevant files for individual observations. 
+
+
+The file structure will be broken down in detail in the descriptions 
+of the individual steps, but the overall structure is as follows:
 
 .. code-block:: bash
 
