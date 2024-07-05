@@ -130,6 +130,10 @@ def extract_1d_spec(standard_star = False):
             alpha=0.8, ms=10)
 
 
+    # hack to distinguish cut values
+
+    fonts = ["+","o","-"]
+
     for i in (1, 2, 3):
         vcut = N_WAVELEN * i/4
         hcut = N_SPATIAL * i/4
@@ -141,12 +145,12 @@ def extract_1d_spec(standard_star = False):
         ax1.axvline(x=vcut, ls=':', color='k')   
         ax1.axhline(y=hcut, ls=':', color='k')
         
-        ax2.plot(hcutax, fit2D_REID(hcutax, hcutrep), lw=1, 
+        ax2.plot(hcutax, fit2D_REID(hcutax, hcutrep), fonts[i-1], lw=1, 
                 label="hcut {:d}".format(int(hcut)))
 
         vcut_profile = fit2D_REID(vcutrep, vcutax)
         vcut_normalize = vcut_profile - np.median(vcut_profile)
-        ax3.plot(vcut_normalize, vcutax, lw=1,
+        ax3.plot(vcut_normalize, vcutax, fonts[i-1] , lw=1,
                 label="vcut {:d}".format(int(vcut)))
 
     ax1.set_ylabel('Spatial direction')

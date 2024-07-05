@@ -18,3 +18,8 @@ scripts extract_science_1d.py and extract_std_1d.py.
 --------------
 
 standard.py made more user friendly ("animated masking and simpler commands").
+
+05.07.2024
+--------------
+
+Better plotting in wavelength calib. assesment
