@@ -18,12 +18,12 @@ Python scripts. Therefore, the installation consists of these steps:
 
 .. _download:
 
-We provide both a quickgide for experienced users and a more detailed guide for users who are new to Python environments.
+We provide both a quickgide for experienced python users and a more detailed guide for users who are new to Python environments.
 
-Quick guide for experienced users
-----------------------------------
+Quick guide for experienced python users
+----------------------------------------
 
-1. `Download the source code. <https://github.com/jfynbo/PyLongslit/>`_
+1. `Download the source code. <https://github.com/KostasValeckas/PyLongslit/>`_
 2. Create a new Python 3.10 environment.
 3. Install the requirments from `requirments.txt` using ``pip``. 
 
@@ -33,12 +33,12 @@ Detailed guide for users new to Python environments
 1. Download the source code
 ===========================
 
-The software can be downloaded from the `GitHub repository website <https://github.com/jfynbo/PyLongslit/>`_ or 
+The software can be downloaded from the `GitHub repository website <https://github.com/KostasValeckas/PyLongslit/>`_ or 
 cloned by using git.
 
 **Direct link to download from the repository website:**
 
-`Download Source Code (ZIP) <https://github.com/jfynbo/PyLongslit/archive/refs/heads/main.zip>`_
+`Download Source Code (ZIP) <https://github.com/KostasValeckas/PyLongslit/archive/refs/heads/main.zip>`_
 
 **Using git: (if you don't know what git is just download the ZIP from link above)** 
 
@@ -46,13 +46,13 @@ SSH (recommended if you plan on developing)...
 
 .. code-block:: bash
 
-    git clone git@github.com:jfynbo/PyLongslit.git
+    git clone git@github.com:KostasValeckas/PyLongslit.git
 
 ... or HTTPS (works too, but you will need to enter your username and password on every pull/push):
 
 .. code-block:: bash
 
-    git clone https://github.com/jfynbo/PyLongslit.git
+    git clone https://github.com/KostasValeckas/PyLongslit.git
 
 
 .. _venv:
