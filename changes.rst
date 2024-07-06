@@ -5,8 +5,9 @@ by automatic determination based on the number of files in the list.
 
 reducescience.py and reducestd.py made into one script,
 here all input/output made dynamic so the scripts no longer
-depend on pre-determined number of files. This edit allows
-for cosmic ray removal for standard stars also.
+depend on pre-determined number of files or prefixes - but require a 
+file name instead.
+This edit allows for cosmic ray removal for standard stars also.
 
 30.06.2024
 --------------
