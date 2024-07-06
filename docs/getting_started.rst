@@ -33,6 +33,11 @@ that you can directly execute the scripts as they are provided.**
 Tutorial
 ----------------------------------------------------
 
+.. note::
+    The steps in this tutorial have been tested on 
+    Linux Ubuntu 22.04.4 LTS (which should also cover MacOS functionality
+    in broad sense) and Windows 10 Pro.
+
 
 .. toctree:: 
    :maxdepth: 2
