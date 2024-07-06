@@ -33,7 +33,7 @@ f.close
 #SET .Z.UNITS = "micro-Janskys"
 #SET .Z.LABEL = "Flux"
 #SET .TABLE.BANDWIDTH = 40
-std_ref_data = np.loadtxt('m'+stdnm+'.dat', dtype=np.float128)
+std_ref_data = np.loadtxt('m'+stdnm+'.dat')
 reflam = std_ref_data[:,0]
 refflux = std_ref_data[:,1]
 bandwidth = 40.
