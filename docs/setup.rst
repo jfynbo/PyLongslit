@@ -8,7 +8,7 @@ This is not a pipeline step, but an introduction to a setup file
 (`setup.py`), that all of the following pipeline steps will read
 in order to fetch relevant libraries, methods, data, constants etc.
 
-The `setup.py` will read in the products from :ref:`pre-processing <pre_processing>`:
+The `setup.py` script will also read in the products from :ref:`pre-processing <pre_processing>`:
 `arcsub.fits`, `arcsub_std.fits`, `obj.fits` and `std.fits`.
 
 The parameters that can be set are documentet in the `setup.py` file.

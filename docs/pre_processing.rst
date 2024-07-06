@@ -13,6 +13,7 @@ The main objective of the pre-processing is subtraction
 of detector bias and flat-fielding of all observation frames
 (science, standard star and arc-lamp).
 
+
 Bias
 """"
 
@@ -101,7 +102,7 @@ to be provided. This is the same for both directories, and it should be called `
 The `crremoval.py` script is used to remove cosmic rays from the frames, 
 and the `reducescience.py` and `reducestd.py` scripts are used to reduce the data.
 The `reducescience.py` and `reducestd.py` rely on the `reduceobs.py` script, 
-which is used to placed in the parenting directory. The whole structure should 
+which is to be placed in the parenting directory. The whole structure should 
 look like this:
 
 .. code-block:: bash

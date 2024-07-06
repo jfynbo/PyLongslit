@@ -4,8 +4,8 @@
 Extract 1d science/standard star spectrum
 =========================================
 
-The procedure for extracting the 1d spectrum of the science observation and standard star 
-is almost the same, and therefore they will be described together. The 
+The procedure for extracting the 1d spectrum of the science observation and the
+standard star is almost the same, and therefore they will be described together. The 
 scripts used for this step are `extract_science_1d.py` and `extract_std_1d.py`.
 Both scripts need `extract_1d.py` in order to work. The input to these scripts
 is the :ref:`setup.py <setup>` file, as well as the `ìdarc.dat` file from the
@@ -50,11 +50,11 @@ To extract the 1d spectrum of the science observation and standard star, follow 
        :width: 600
        :align: center
 
-    The image on the top left is the detector image with wavelength colormapped
+    The image on the top left is the detector image with a wavelength colormapped
     to every pixel. The red lines are the identified lines used in production
     of the wavelentgh solution. Here we are looking for a smooth and continuous
     colormap. The dashed black lines are the lines that are plotted in the
-    curve plots. `hcut` are the horizontal lines, and `vcut` are the vertical lines.
+    curve plots (these are `the cuts`). `hcut` are the horizontal lines, and `vcut` are the vertical lines.
     For horizontal lines, we are looking for a smooth, somewhat constantly growing curve.
     For the vertical lines, some wavelength change is okay 
     in vertical direction, as it can be caused by optical effects. However, these
@@ -88,13 +88,14 @@ To extract the 1d spectrum of the science observation and standard star, follow 
        :width: 600
        :align: center
 
-4. **Evaluate results for the remainder of the extraction**
-
     The rest of the script is automatic.
 
     In the following we provide an array of quality assesment plots with
     comments of the expected results. If the results are not as expected,
     you need to find relevant parameters and adjust them in :ref:`setup.py <setup>`.      
+
+
+4. **Evaluate results for the remainder of the extraction**
 
     The software will now perform a fit to the sky background,
     where we are looking for a line that goes through the sky background only:
@@ -124,7 +125,7 @@ To extract the 1d spectrum of the science observation and standard star, follow 
        :align: center
 
 A series of files are produced, and when both scripts are excecuted, 
-the files structure should now look something like this:
+the relevant file structure should now look like this:
 
 .. code-block:: bash
 

@@ -23,6 +23,13 @@ is done from the `tutorial` directory.
 You have to excecute the steps exactly in the order they are presented in the
 contents table below.
 
+**!!!IMPORTANT!!!**
+
+**The tutorial describes a series of parameters that need to be 
+set in various scripts to match your data. For the tutorial data, everything in the
+tutorial directory has the right parameters set. This means
+that you can directly execute the scripts as they are provided.**
+
 Tutorial
 ----------------------------------------------------
 

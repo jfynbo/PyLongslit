@@ -5,11 +5,14 @@ Identify
 
 In this step, we manually identify the lines in the arc-lamp spectrum, and fit
 a polynomial function for describing wavelength as a function of pixel
-(this function is called a **wavelength solution**). 
-This is done by in an interactive plotting window/GUI. 
+(this function is called a **wavelength solution**). This later allows
+us to calibrate the pixel values of the science and standard star frames
+to wavelength values.
+The identification is done in an interactive plotting window/GUI. 
 
 **This step is by far the most time-consuming for the user, as 
-a fair amount of user work is needed.**
+a fair amount of user work is needed. Excpect this to be challenging
+at first, if you have not tried this type of routine before.**
 
 To run this script, you will need the `arcsub.fits` file from the 
 :ref:`pre-processing <pre_processing>` step. You will also need a 
@@ -20,7 +23,7 @@ list for the HeNe lamp used for the tutorial data.
 As one will need a referrence spectrum with emission lines tagged with wavelentghs
 to manually identify the lines (also called a **arc lamp map**), this also needs to be aquired. 
 For this tutorial, we provide such reference spectra for the
-HeNe lamp used with the g04 grating for ALFOSC in 4 PDF files in the 
+HeNe lamp used with the g04 grating for `ALFOSC <https://www.not.iac.es/instruments/alfosc/>`_ in 4 PDF files in the 
 `database` directory. 
 These have been downloaded from the `ALFOSC website <https://www.not.iac.es/instruments/alfosc/lamps/>`_ .
 
@@ -62,11 +65,9 @@ the line identification:
    directory (or downloaded elswhere for your own setup) to identify the
    wavelentghs of the lines in the arc spectrum. This is done by clicking on the
    `Add Line` button, and then clicking on the arc spectrum where you think a line
-   is, and then manually typing in the wavelength of the line. Example for a small
-   Helium portion of the spectrum, with a zoom in of the corresponding reference 
-   spectrum (here there is a small offset between the reference spectrum and the
-   line list - we have used the linelist, since the software will rely on the list
-   later):
+   is, and then manually typing in the wavelength of the line. Below is an 
+   example for a small Helium portion of the spectrum, with a zoom in of the corresponding 
+   reference spectrum:
 
     .. image:: pictures/id_post_first.png
        :width: 600
@@ -75,6 +76,10 @@ the line identification:
     .. image:: pictures/id_post_first_ref.png
        :width: 600
        :align: center
+
+   (here there is a small offset in wavelentghs between the reference spectrum 
+   (lowest picture) and the line list (upper left corner) - we have used the linelist,
+   since the software will rely on the list later)
 
    After you have found a handfull of lines, you can click on the `Fit` button to
    make a polynomial fit for a function that describes wavelength as a function of
@@ -96,7 +101,8 @@ the line identification:
    add it. If it does not find a match, it will show a message indicating so,
    but it will still add the line - you will then have to correct it manually.
    If your fit does not seem to be good, you can click on the `Clear fit` button
-   to remove it, and then add more lines manually.
+   to remove it, and then add more lines manually. You can also selectively remove
+   one or all lines.
 
    From here on, you have to obtain the best possible fit by trial and error:
 
@@ -127,7 +133,6 @@ the line identification:
             ├── arcsub.fits
             ├── database
             │   ├── idarc.dat
-            │   ├── lapalma.dat
             │   ├── map-g04-he-1.pdf
             │   ├── map-g04-he-2.pdf
             │   ├── map-g04-ne-1.pdf

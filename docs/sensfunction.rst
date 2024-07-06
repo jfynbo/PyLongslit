@@ -7,10 +7,11 @@ This script uses the :ref:`calibrated standard star spectrum <standard>`
 to fit a sensitivity function. The sensitivity function is a function
 that describes the efficiency of the spectrograph as a function of
 wavelength. The sensitivity function is used to convert the extracted
-science spectrum to physical flux units.
+science spectrum from detector counts in ADU (analog to digital units)
+to physical flux units.
 
-The script used for this step is `sensfunction.py`. All output produced
-while running `standard.py` is used as input for this script. Furthemore,
+The script used for this step is `sensfunction.py`. :ref:`All output produced
+while running standard.py <standard>` is used as input for this script. Furthemore,
 a file describing the atmospheric extinction is needed. This file is provided
 for the tutorial, and is named `lapalma.dat` (since the data is from 
 the `NOT <https://www.not.iac.es/>`_). If you are using another extinction file,
