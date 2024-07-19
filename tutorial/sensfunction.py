@@ -76,9 +76,10 @@ ax1 = plt.subplot(gs[0:2])
 ax2 = plt.subplot(gs[2])
 plt.setp(ax1.get_xticklabels(), visible=False)
 ax1.plot(ID_init['wavelength'], ID_init['conversion'],
-         ls=':', color='k', ms=10, marker='+')
+        ls=':', color='k', ms=10, marker='+', label = 'Estimated conversion')
+ax1.plot(ID_init['wavelength'], chebval(ID_init['wavelength'], coeff_ID), label = "Chebyshev fit")
 ax2.plot(ID_init['wavelength'], residual,
-         ls='', color='k', ms=10, marker='+')
+        ls='', color='k', ms=10, marker='+')
 ax2.axhline(y=0, color='b', ls=':')
 ax1.set_ylabel(r'Conversion (dex)')
 ax2.set_ylabel(r'Residual (dex)')
@@ -86,7 +87,8 @@ ax2.set_xlabel('Wavelength (AA)')
 ax1.grid(ls=':')
 ax2.grid(ls=':')
 plt.suptitle(('Sens Function (Chebyshev order {:d})\n'.format(ORDER_SF)
-              + r'RMSE = {:.2f}'.format(fitRMS)))
+            + r'RMSE = {:.2f}'.format(fitRMS)))
+ax1.legend()
 plt.show()
 
 #Write chebychev coefficients to a file in the database
