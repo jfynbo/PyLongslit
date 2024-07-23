@@ -6,7 +6,7 @@ As for now, the software is tested and designed to work with data from
 Nordic Optical Telescope (NOT), but adaptions to other instruments should be 
 possible - feel free to fork the repository and make your own changes.
 
-Instalaltion, tutorials and other docs can be found at:
+Installation, tutorials and other docs can be found at:
 
 https://kostasvaleckas.github.io/PyLongslit/
 
