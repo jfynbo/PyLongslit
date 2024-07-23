@@ -8,5 +8,5 @@ directed through out
 `GitHub repository <https://github.com/KostasValeckas/PyLongslit/>`_
 or by email to :
 
-TBD
+kostas.valeckas@nbi.ku.dk
 
