@@ -18,12 +18,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'PyLongslit'
-copyright = '2024, TBD'
-author = 'TBD'
+copyright = ''
+author = ''
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.0'
-
+release = ''
 
 # -- General configuration ---------------------------------------------------
 
